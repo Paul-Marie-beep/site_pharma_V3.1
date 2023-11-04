@@ -1,0 +1,14 @@
+{
+  "name": "site-pharma_v3_projet",
+  "version": "1.0.0",
+  "description": "Website for a chemist : html/css/js",
+  "main": "index_script.js",
+  "scripts": {
+    "sass": "sass --watch ./src/sass/main.scss:./src/css/style.css -w --style compressed"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.60.0"
+  }
+}

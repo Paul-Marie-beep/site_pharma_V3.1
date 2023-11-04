@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  min-height: 100%;
+  background-color: $background-color;
+  overflow-x: hidden;
+  /* On met l'overflow x parce que sinon ont peu scorller et voir les autres photos */
+}
+
+html {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $color-secondary;
+  &:active {
+    outline: none;
+    box-shadow: none;
+    transition: none;
+  }
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 5rem;
+  font-weight: bolder;
+  text-align: center;
+  color: $color-secondary;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  color: $color-secondary;
+  font-size: 2.5rem;
+  text-align: center;
+  margin: auto;
+  word-break: break-word;
+}
+
+header {
+  height: 100vh;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.navbar {
+  height: $navbar-height;
+  width: 100%;
+}
+
+.navlinks {
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__left {
+    display: flex;
+    padding: 0%;
+    align-items: center;
+    &--link {
+      margin-left: 1rem;
+    }
+  }
+  &__right {
+    cursor: pointer;
+
+    &--contact {
+      margin: auto;
+      margin-right: 1rem;
+      color: $color-secondary;
+    }
+  }
+  @media screen and (min-width: 751px) {
+    animation: navbarFadeIn 1s ease-in-out;
+  }
+}
+
+@keyframes navbarFadeIn {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.navlink {
+  &:after {
+    display: block;
+    content: "";
+    border-bottom: 2px solid $color-secondary;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  &:hover:after {
+    transform: scaleX(1);
+  }
+}
+
+.nav-sticky {
+  position: fixed;
+  top: 0px;
+  z-index: 50;
+  background-color: $background-color;
+}
+
+.fatty {
+  font-weight: bolder;
+}
+
+// Responsive
+.burger {
+  display: none;
+  border: 1px solid $color-secondary;
+  cursor: pointer;
+  height: fit-content;
+  margin: auto;
+  margin-right: 1rem;
+
+  &__line {
+    width: 24px;
+    height: 2px;
+    margin: 5px;
+    background-color: white;
+    transition: all 0.3s ease;
+  }
+}
+
+@keyframes navLinkFade {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.toggle .burger__line--1 {
+  transform: rotate(-45deg) translate(-4px, 6px);
+}
+.toggle .burger__line--2 {
+  opacity: 0;
+}
+.toggle .burger__line--3 {
+  transform: rotate(45deg) translate(-4px, -6px);
+}
+.toggle {
+  border: none;
+}
+
+@media screen and (max-width: 750px) {
+  .navbar {
+    display: flex;
+    justify-content: right;
+    position: fixed;
+    top: 0px;
+    background-color: $background-color;
+    z-index: 2;
+  }
+
+  .navlinks {
+    opacity: 0;
+    color: $color-secondary;
+    position: absolute;
+    right: 0;
+    height: calc(100vh - $navbar-height);
+    top: $navbar-height;
+    background-color: $background-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    transform: translateX(100%);
+    transition: transform 0.8s ease-in;
+    z-index: 2;
+    &__left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: left;
+      height: 30%;
+      &--link {
+        margin: auto;
+      }
+    }
+    &__right {
+      margin-top: 2rem;
+      &--contact {
+        margin: auto;
+      }
+    }
+  }
+
+  .burger {
+    display: block;
+  }
+}
+
+.nav-active {
+  transform: translateX(0%) !important;
+}
+
+.nav-visible {
+  opacity: 1;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Footer */
+
+footer {
+  height: 3rem;
+  background-color: $background-color;
+  margin-top: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy-right {
+  margin-left: 1rem;
+  color: $text-primary;
+}
+
+.legal-link {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: $text-primary;
+}

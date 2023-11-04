@@ -1,0 +1,970 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.titre {
+  height: calc(100vh - $navbar-height - $jumbo-height);
+  @media screen and (max-width: 750px) {
+    margin-top: $navbar-height;
+  }
+  &__sur {
+    width: 75%;
+    margin: auto;
+    padding-top: 4rem;
+    opacity: 0;
+    overflow-wrap: break-word;
+    @media screen and (max-width: 1130px) {
+      font-size: 4.5rem;
+    }
+    @media screen and (max-width: 1015px) {
+      font-size: 4rem;
+    }
+    @media screen and (max-width: 905px) {
+      font-size: 3.75rem;
+    }
+    @media screen and (max-width: 846px) {
+      font-size: 3.5rem;
+    }
+    @media screen and (max-width: 790px) {
+      font-size: 3rem;
+    }
+    @media screen and (max-width: 680px) {
+      font-size: 2.75rem;
+    }
+    // Pas d'animation sur mobile
+    @media screen and (min-width: 650px) {
+      animation: titleFadeIn 1s 0.3s ease-in-out forwards;
+    }
+    @media screen and (max-width: 651px) {
+      opacity: 1;
+    }
+    @media screen and (max-width: 625px) {
+      font-size: 2.5rem;
+    }
+    @media screen and (max-width: 564px) {
+      width: 85%;
+    }
+    @media screen and (max-width: 530px) {
+      font-size: 2.25rem;
+    }
+    @media screen and (max-width: 451px) {
+      padding-top: 4rem;
+      font-size: 1.85rem;
+    }
+    @media screen and (max-width: 369px) {
+      padding-top: 4rem;
+      font-size: 1.65rem;
+    }
+
+    @media screen and (max-height: 700px) {
+      padding-top: 3rem;
+    }
+    @media screen and (max-height: 570px) {
+      padding-top: 2rem;
+    }
+    @media screen and (max-height: 500px) {
+      font-size: 2.5rem;
+    }
+    @media screen and (max-height: 450px) {
+      padding-top: 1rem;
+    }
+    @media screen and (max-height: 400px) {
+      padding-top: 0 rem;
+    }
+  }
+  &__sous {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 75%;
+    opacity: 0;
+
+    // Pas d'animation sur mobile
+    @media screen and (min-width: 650px) {
+      animation: subtitleFadeIn 1s 0.5s ease-in-out forwards;
+    }
+    // Du coup, les h2 ne sont visibles dès le chargement du site
+    @media screen and (max-width: 651px) {
+      opacity: 1;
+    }
+
+    @media screen and (max-width: 790px) {
+      width: 65%;
+    }
+    @media screen and (max-width: 564px) {
+      width: 70%;
+    }
+    @media screen and (max-width: 508px) {
+      width: 80%;
+    }
+    @media screen and (max-width: 451px) {
+      width: 85%;
+    }
+    @media screen and (max-width: 431px) {
+      flex-direction: column;
+    }
+    @media screen and (max-height: 400px) {
+      display: none;
+    }
+    & h2 {
+      color: $background-color;
+      font-size: 1.5rem;
+      font-family: "Roboto", sans-serif;
+      -webkit-text-stroke: 1.3px $color-secondary;
+      @media screen and (max-width: 905px) {
+        margin-top: 0rem;
+      }
+      @media screen and (max-width: 846px) {
+        font-size: 1.35rem;
+      }
+      @media screen and (max-width: 790px) {
+        font-size: 1rem;
+        margin-top: 1rem;
+        -webkit-text-stroke: 0px;
+        color: $color-secondary;
+      }
+
+      @media screen and (max-height: 700px) {
+        font-size: 1rem;
+        -webkit-text-stroke: 0px;
+        color: $color-secondary;
+      }
+    }
+  }
+}
+
+@keyframes titleFadeIn {
+  0% {
+    transform: translateY(80%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes subtitleFadeIn {
+  0% {
+    transform: translateY(250%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.jumbo {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 100%;
+  height: $jumbo-height;
+  &__pic {
+    position: relative;
+    width: 33%;
+    height: $jumbo-height;
+    overflow: hidden;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: $background-color;
+      height: 100%;
+      min-width: 100%;
+    }
+    &--1 {
+      @media screen and (max-width: 650px) {
+        width: 100%;
+      }
+    }
+    &--1 img {
+      @media screen and (max-width: 850px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+    }
+    &--2,
+    &--3 {
+      @media screen and (max-width: 650px) {
+        width: 0;
+      }
+    }
+    &--1::after {
+      animation: coverFadeOut 1s 1s ease-in-out forwards;
+      transform-origin: top;
+    }
+    &--2::after {
+      width: 101%;
+      animation: coverFadeOut 1s 1.2s ease-in-out forwards;
+      transform-origin: top;
+    }
+    &--3::after {
+      animation: coverFadeOut 1s 1.4s ease-in-out forwards;
+      transform-origin: top;
+    }
+  }
+}
+
+@keyframes coverFadeOut {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Categories
+
+.categories {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30rem;
+  margin: auto;
+  margin-top: 5rem;
+  width: 95%;
+  height: 70vh;
+  transition: 1s ease;
+  @media screen and (max-width: 750px) {
+    margin-top: 2.5rem;
+  }
+  &__text {
+    width: 35%;
+    & p {
+      color: $color-secondary;
+      width: 80%;
+      margin: auto;
+      margin-top: 2rem;
+      text-align: center;
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+  }
+  &__pictures {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 65%;
+    margin: auto;
+    margin-left: 2rem;
+    gap: 1rem;
+  }
+}
+
+.item {
+  width: 32%;
+  border-radius: 5px;
+  color: $color-secondary;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
+  transition: width 700ms ease;
+  &:hover {
+    width: 120%;
+    .item__vert {
+      opacity: 0;
+    }
+    .item__horiz {
+      opacity: 1;
+    }
+  }
+  &__horiz {
+    opacity: 0;
+    transition: opacity 1000ms ease;
+    position: absolute;
+    bottom: 1rem;
+    & h3 {
+      width: 90%;
+      margin: auto;
+      font-size: 2rem;
+    }
+    & p {
+      width: 90%;
+      margin: auto;
+    }
+  }
+  &__vert {
+    transform: rotate(-90deg);
+    font-size: 2.5rem;
+    position: absolute;
+    bottom: 6rem;
+    left: -7rem;
+    transition: opacity 200ms ease;
+    white-space: nowrap;
+    &--huiles {
+      bottom: 8.5rem;
+      left: -9rem;
+    }
+    &--homeo {
+      bottom: 5.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .item__horiz h3 {
+    font-size: 1.5em;
+  }
+
+  .categories__text h2 {
+    font-size: 2rem;
+  }
+
+  .categories__text p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .categories {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: fit-content;
+    margin-bottom: 0px;
+    &__text {
+      width: 100%;
+    }
+    &__text h2 {
+      width: 80%;
+      font-size: 2.5rem;
+    }
+    &__text p {
+      width: 95%;
+    }
+    &__pictures {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin: auto;
+    }
+  }
+
+  .item {
+    width: 70%;
+    height: 50vh;
+    margin-top: 2rem;
+    &__vert {
+      display: none;
+    }
+    &__horiz {
+      opacity: 1;
+    }
+    &__horiz h3 {
+      font-size: 1.5rem;
+    }
+    &:hover {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .item {
+    width: 80%;
+    height: 20rem;
+    &:hover {
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .item {
+    height: 17rem;
+    &__horiz h3 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Sticky Picture
+
+.sticky-pic {
+  margin-top: 5rem;
+  min-width: 100%;
+  &__container {
+    height: 80vh;
+    min-width: 100%;
+    background: url("../../src/images/sticky/ext_pharma.jpeg") no-repeat fixed;
+    background-size: cover;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Produits du moment
+
+.moment-products {
+  margin-top: 5rem;
+  transition: 1s;
+  &__container {
+    width: 70%;
+    margin: auto;
+    margin-top: 5rem;
+    position: relative;
+  }
+}
+
+.top-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: auto;
+  &--texts {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 30%;
+    @media screen and (max-width: 800px) {
+      max-width: 50%;
+      word-wrap: break-word;
+    }
+  }
+  &__pics {
+    display: flex;
+    align-items: center;
+    width: 25%;
+    @media screen and (max-width: 1000px) {
+      width: 28%;
+    }
+    @media screen and (max-width: 800px) {
+      width: 30%;
+    }
+    @media screen and (max-width: 650px) {
+      width: 33%;
+    }
+  }
+}
+
+.titles {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: auto;
+  &__title {
+    height: fit-content;
+    width: 26rem;
+    margin: auto;
+    @include transition-transform;
+    @media screen and (max-width: 900px) {
+      width: 23rem;
+    }
+    @media screen and (max-width: 800px) {
+      width: 20rem;
+    }
+    @media screen and (max-width: 700px) {
+      width: 18rem;
+    }
+  }
+}
+
+.title {
+  &-green {
+    color: $color-primary;
+    font-size: 1.5rem;
+    @media screen and (max-width: 800px) {
+      font-size: 1.25rem;
+    }
+  }
+  &-grey {
+    color: #888;
+    margin: auto;
+  }
+}
+
+.descriptions {
+  display: flex;
+  align-items: flex-start;
+  &__description {
+    text-align: left;
+    width: 22rem;
+    margin: auto;
+    margin-top: 2rem;
+    font-style: italic;
+    color: $color-secondary;
+    @include transition-transform;
+    @media screen and (max-width: 1000px) {
+      margin-top: 0.5rem;
+    }
+    @media screen and (max-width: 700px) {
+      margin-top: 0.5rem;
+      width: 17rem;
+    }
+    @media screen and (max-width: 700px) {
+      margin-top: 0.2rem;
+      width: 15rem;
+    }
+  }
+}
+
+.product {
+  &__pic {
+    min-width: 100%;
+    min-height: 100%;
+    @include transition-transform;
+  }
+}
+
+.bottom-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5rem;
+  overflow: hidden;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  width: 12%;
+  &__arrow {
+    height: 2.5rem;
+    width: min-content;
+    max-width: 3rem;
+    cursor: pointer;
+    &--left {
+      transform: rotate(90deg);
+      opacity: 0.5;
+    }
+    &--right {
+      transform: rotate(-90deg);
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    min-width: 14%;
+  }
+  @media screen and (max-width: 1000px) {
+    min-width: 16%;
+  }
+  @media screen and (max-width: 850px) {
+    min-width: 18%;
+  }
+  @media screen and (max-width: 750px) {
+    min-width: 20%;
+  }
+  @media screen and (max-width: 650px) {
+    min-width: 25%;
+  }
+}
+
+.stepper {
+  width: 75%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: -2.2rem;
+  &__ball {
+    position: relative;
+    height: 1.5rem;
+    width: 33%;
+    &--grey {
+      @include ball($stepper-grey);
+    }
+    &--green {
+      @include ball($stepper-green);
+      transition: transform 0.2s ease-in-out;
+      transform-origin: left;
+    }
+    &::before {
+      position: absolute;
+      content: "";
+      height: 0.2rem;
+      background-color: $stepper-grey;
+      top: 45%;
+      width: 100%;
+      z-index: -1;
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      height: 0.2rem;
+      background-color: $stepper-green;
+      top: 45%;
+      width: 100%;
+      right: 0%;
+      transform-origin: left;
+      @include transition-after;
+      z-index: 2;
+    }
+    &:last-child {
+      width: 4.1rem;
+      @media screen and (max-width: 1000px) {
+        width: 4.3rem;
+      }
+      @media screen and (max-width: 800px) {
+        width: 4.4rem;
+      }
+      @media screen and (max-width: 725px) {
+        width: 4.5rem;
+      }
+      @media screen and (max-width: 650px) {
+        width: 4.6rem;
+      }
+      @media screen and (max-width: 650px) {
+        width: 4.7rem;
+      }
+      @media screen and (max-width: 570px) {
+        width: 4.8rem;
+      }
+    }
+    &:last-child::before {
+      content: none;
+    }
+    &:last-child::after {
+      content: none;
+    }
+  }
+  &__ball img {
+    width: 1.5rem;
+  }
+}
+
+.sm-screen-replacement {
+  display: none;
+}
+
+@media screen and (max-width: 750px) {
+  .moment-products {
+    min-height: auto;
+    margin: auto;
+    margin-top: 5rem;
+  }
+
+  .moment-products__container {
+    display: none;
+  }
+
+  .sm-screen-replacement {
+    width: 90;
+    margin: auto;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-10%);
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  .rpm-pic {
+    width: 50%;
+    margin-top: 2rem;
+  }
+
+  .testimonial_header-rpm {
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+    color: $color-primary;
+  }
+
+  .product-grey-addition {
+    color: #888;
+    text-align: center;
+  }
+
+  .testimonial__text {
+    width: 70%;
+    color: $text-primary;
+    margin: auto;
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+/// Contact
+
+#contact {
+  margin-bottom: 5rem;
+  transition: 1s;
+  margin-top: 5rem;
+  @media screen and (max-width: 650px) {
+    margin-top: 2rem;
+  }
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 4rem;
+}
+
+.right-bloc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 25rem;
+
+  &__contact {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-height: 50%;
+    &--find-us {
+      font-size: 1.5rem;
+      margin-top: 0px;
+      color: $color-primary;
+    }
+  }
+}
+
+.metro,
+.adress,
+.mail,
+.tel {
+  @include find-us;
+}
+
+.after::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 75%;
+  width: 100%;
+  background: $gradient-primary;
+  transform: scale(1.07, 1) skewX(-10deg);
+  transform-origin: right;
+  transition: transform 1s ease-in-out;
+}
+
+.erase-after::after {
+  transform: scale(0, 1);
+}
+
+.plus-span {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 1300px) {
+  .google-map {
+    width: 30rem;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .google-map {
+    width: 60%;
+    margin-bottom: 2rem;
+  }
+  .right-bloc {
+    height: auto;
+    &__contact {
+      &--find-us {
+        margin: auto;
+      }
+    }
+  }
+
+  .metro,
+  .adress,
+  .mail,
+  .tel {
+    margin: auto;
+  }
+
+  .mobile-margin {
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 835px) {
+  .google-map {
+    height: 20rem;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .google-map {
+    width: 85%;
+  }
+  .right-bloc {
+    margin-top: 2rem;
+    &__contact {
+      &--find-us {
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Horaires */
+
+.horaires {
+  margin-bottom: 2rem;
+  margin-top: 5rem;
+}
+
+.horaires h3 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin: auto;
+  margin-top: 5rem;
+  width: fit-content;
+}
+
+.horaires-padded-component {
+  margin: auto;
+  margin-top: 4rem;
+  width: 51%;
+  height: 12rem;
+  border-radius: 5px;
+  border: 1px gray;
+  background-color: rgb(201, 247, 208);
+  border-radius: 10px;
+}
+
+.horaires-btn-container {
+  margin: auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.horaires-btn {
+  background-color: white;
+  color: $color-primary;
+  border-radius: 12px;
+  border: 1px solid $color-primary;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 8rem;
+  height: 2.5rem;
+}
+
+.horaires-btn:focus {
+  outline: none;
+}
+
+.horaires-btn-active {
+  transform: translateY(-50%);
+  color: $text-primary;
+  background-color: $color-primary;
+  border: 2px solid $color-primary;
+}
+
+.horaires-content {
+  margin: auto;
+  width: fit-content;
+}
+
+.horaires-content h5 {
+  font-size: 1.5rem;
+  margin: auto;
+  width: fit-content;
+  margin-top: 10%;
+  text-align: center;
+}
+
+.horaires-content p {
+  font-size: 1.5rem;
+  margin: auto;
+  width: fit-content;
+  margin-top: 3%;
+  text-align: center;
+}
+
+.horaires-content-hidden {
+  display: none;
+}
+
+@media screen and (max-width: 1050px) {
+  .horaires-content {
+    margin-top: 2rem;
+  }
+
+  .horaires-content h5 {
+    font-size: 2rem;
+  }
+
+  .horaires-content p {
+    font-size: 1.25rem;
+  }
+
+  .horaires-btn {
+    font-size: 1rem;
+    width: 6rem;
+  }
+
+  .horaires-padded-component {
+    height: 14rem;
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .horaires-padded-component {
+    height: 16rem;
+    width: 70%;
+  }
+
+  .horaires-btn-container {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .horaires-padded-component {
+    height: 11rem;
+    width: 85%;
+  }
+
+  .horaires-btn-container {
+    width: 65%;
+    margin-top: 2rem;
+  }
+
+  .horaires-btn {
+    font-size: 0.7rem;
+    width: 4rem;
+  }
+
+  .horaires-content h5 {
+    font-size: 1.25rem;
+  }
+
+  .horaires-content p {
+    font-size: 1rem;
+  }
+}

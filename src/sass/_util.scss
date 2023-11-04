@@ -1,0 +1,91 @@
+$background-color: rgb(2, 15, 2);
+$color-primary: rgb(20, 163, 20);
+$color-secondary: white;
+$jumbo-height: 65vh;
+$navbar-height: 3rem;
+$ball-height: 1.5rem;
+$ball-width: 3%;
+$stepper-green: $color-primary;
+$stepper-grey: rgb(204, 201, 201);
+$gradient-primary: linear-gradient(to top left, #35af81, #a1e665);
+$text-primary: white;
+$card-width: 22rem;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@mixin ball($color) {
+  border-radius: 50%;
+  background-color: $color;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@mixin transition-transform {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+@mixin transition-after {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+@mixin logo {
+  &__logo {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@mixin find-us {
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: white;
+  @include logo;
+  &__text {
+    margin-left: 1rem;
+  }
+}
+
+.unscale::after {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.ball-up {
+  transform: translateY(-100%);
+}
+
+.atrophy {
+  transform: scaleX(0);
+}
+
+.icone-lazy {
+  filter: blur(20px);
+}
+
+.section-hidden {
+  opacity: 0;
+  transform: translateY(10%);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.shrink-left {
+  transform: rotate(90deg) scale(0.9) !important;
+}
+
+.shrink-right {
+  transform: rotate(-90deg) scale(0.9) !important;
+}
+
+.translate--100 {
+  transform: translateX(-100%);
+}
+.translate--200 {
+  transform: translateX(-200%);
+}
+.translate--300 {
+  transform: translateX(-300%);
+}

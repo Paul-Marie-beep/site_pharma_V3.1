@@ -1,0 +1,19 @@
+.legal {
+  &__header {
+    height: $navbar-height;
+  }
+  &__text {
+    width: 80%;
+    margin: auto;
+    & h2 {
+      margin-top: 5rem;
+      font-size: 1.2rem;
+    }
+    & p {
+      color: $color-secondary;
+    }
+  }
+  &__footer {
+    margin-top: 3rem;
+  }
+}
