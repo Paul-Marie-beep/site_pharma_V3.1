@@ -85,3 +85,64 @@ const removeVisibility = function () {
   }
 };
 window.addEventListener("resize", removeVisibility);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Snow effect
+
+const NUMBER_OF_SNOWFLAKES = 300;
+const MAX_SNOWFLAKE_SIZE = 5;
+const MAX_SNOWFLAKE_SPEED = 2;
+const SNOWFLAKE_COLOUR = "#ddd";
+const snowflakes = [];
+
+//Le <canvas> est un élément qui peut être utilisé pour dessiner des graphiques, des images et des animations sur une page web.
+const canvas = document.createElement("canvas");
+canvas.style.position = "absolute";
+canvas.style.top = "0px";
+// We do not want the snowflakes to prevent the user from interacting with the page
+canvas.style.pointerEvents = "none";
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+// we add the canvas element as the last child of the body element
+document.body.appendChild(canvas);
+
+//La méthode getContext est appelée sur un élément <canvas> pour obtenir le contexte de rendu. Le paramètre '2d' indique que vous souhaitez obtenir un contexte de rendu bidimensionnel, qui est utilisé pour le dessin en 2D.
+const context = canvas.getContext("2d");
+
+// By adding parenthesis to the arrow function, it will return an object
+const createSnowFlake = () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  radius: Math.floor(Math.random() * MAX_SNOWFLAKE_SIZE) + 1,
+  colour: SNOWFLAKE_COLOUR,
+  speed: Math.random() * MAX_SNOWFLAKE_SPEED + 3,
+});
+
+const drawSnowFlake = (snowflake) => {
+  context.beginPath();
+  context.arc(snowflake.x, snowflake.y, snowflake.radius, 0, Math.PI * 2);
+  context.fillStyle = snowflake.colour;
+  context.fill();
+  context.closePath();
+};
+
+const updateSnowflake = (snowflake) => {
+  snowflake.y += snowflake.speed;
+  if (snowflake.y > canvas.height) {
+    Object.assign(snowflake, createSnowFlake());
+  }
+};
+
+const animate = () => {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  snowflakes.forEach((snowflake) => {
+    updateSnowflake(snowflake);
+    drawSnowFlake(snowflake);
+  });
+};
+
+for (let i = 0; i < NUMBER_OF_SNOWFLAKES; i++) {
+  snowflakes.push(createSnowFlake());
+}
+
+animate();
