@@ -113,9 +113,12 @@ const context = canvas.getContext("2d");
 const createSnowFlake = () => ({
   x: Math.random() * canvas.width,
   y: Math.random() * canvas.height,
+  // We add +1 to be sure that the radius will never be 0
   radius: Math.floor(Math.random() * MAX_SNOWFLAKE_SIZE) + 1,
   colour: SNOWFLAKE_COLOUR,
   speed: Math.random() * MAX_SNOWFLAKE_SPEED + 3,
+  sway: Math.random() - 0.5,
+  // substract 0.5 allows us to get a value that's randomly positive or negative
 });
 
 const drawSnowFlake = (snowflake) => {
@@ -128,6 +131,7 @@ const drawSnowFlake = (snowflake) => {
 
 const updateSnowflake = (snowflake) => {
   snowflake.y += snowflake.speed;
+  snowflake.x += snowflake.sway;
   if (snowflake.y > canvas.height) {
     Object.assign(snowflake, createSnowFlake());
   }
@@ -139,10 +143,22 @@ const animate = () => {
     updateSnowflake(snowflake);
     drawSnowFlake(snowflake);
   });
+  requestAnimationFrame(animate);
 };
 
 for (let i = 0; i < NUMBER_OF_SNOWFLAKES; i++) {
   snowflakes.push(createSnowFlake());
 }
+
+//We want to make sure that the animation will be seen on the whole window width in case the window is resized
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// To make sure that the animation will carry on if we scroll
+window.addEventListener("scroll", () => {
+  canvas.style.top = `${window.scrollY}px`;
+});
 
 animate();
