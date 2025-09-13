@@ -521,6 +521,7 @@
     height: 100%;
     object-fit: contain;
     flex-shrink: 0;
+    // Flex-shrink added to make sure that Firefox does not try to reduce the size of the pictures of his own volition
     @include transition-transform;
   }
 }
